@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
-
 <body>
   
   <!-- Main Navigation -->
@@ -21,8 +20,9 @@
         <li><a href="#cont2" id="about" class="nav_link" aria-label="Go to About Section">About</a></li>
         <li><a href="#cont3" id="MYProjects" class="nav_link" aria-label="Go to Projects Section">Projects</a></li>
         <li><a href="#cont4" id="blog" class="nav_link" aria-label="Go to Blog Section">Blogs</a></li>
-      <button id="modeToggle" aria-label="Toggle dark mode"><i class="ri-moon-clear-fill"></i></button>
+      <!-- <button id="modeToggle" aria-label="Toggle dark mode"><i class="ri-moon-clear-fill"></i></button> -->
     </div>
+    <div id="border"></div>
   </nav>
 
   <!-- Mobile/Bottom Navigation -->
@@ -32,17 +32,19 @@
         <a href="#cont" aria-label="Go to homepage">MYWebsite</a>
       </div>
       <div class="rightbtm">
-        <button id="modeToggle2" aria-label="Toggle dark mode"><i class="ri-moon-clear-fill"></i></button>
+        <!-- <button id="modeToggle2" aria-label="Toggle dark mode"><i class="ri-moon-clear-fill"></i></button> -->
         <li id="menu" onclick="showSection()" aria-label="Open side menu"><i class="ri-apps-2-line"></i></li>
       </div>
     </div>
+    <div id="border_2"></div>
   </div>
 
   <!-- Hero Section -->
   <main id="cont" role="main" aria-label="Homepage introduction">
     <div class="box">
-      <span class="text first_text" aria-live="polite">Built With</span>
-      <span class="text sec_text" style="font-family: monospace;">Curiosity/></span>
+      <img src="bracket (1).png" alt="" id="img1">
+      <span class="text first_text" aria-live="polite">Built With Curiosity.</span>
+      <img src="bracket.png" alt="" id="img2">
     </div>
     <div class="name">
       <p>Hello I'm</p>
@@ -62,25 +64,19 @@
 
   <!-- About Section -->
   <section id="cont2" aria-labelledby="aboutSectionHeading">
-    <h1 id="aboutSectionHeading">About Me!</h1>
-    <div class="about">
-      <img src="Capture.PNG" alt="Profile picture" role="img">
-      <div class="about-text">
-        <p>
-          Hello! I'm a passionate developer who loves creating responsive and visually appealing websites. I enjoy turning complex problems into simple, beautiful, and intuitive designs.
-        </p>
-        <p>
-          Whether it's frontend magic or backend logic, I find joy in every line of code I write. Let’s build something amazing together!
-        </p>
-      </div>
+    <div class="arrow">
     </div>
-
+    <div class="about_me">
+      <h1>About Me</h1>
+    </div>
+    <img src="Capture.PNG" alt="">
+    <p>I'm a budding programmer who's really getting into the world of code. I love the feeling of building things, whether it's a simple script or a more complex application. Beyond that, I also dabble in design with Figma, which is fantastic for bringing my ideas to life visually before diving into the code. Python and Java have especially caught my eye, and I'm having a blast learning their ins and outs. It's a journey of continuous discovery, and I'm excited to see where it takes me!</p>
     <!-- Social Links -->
     <div id="social_links" role="region" aria-label="Social media links">
-      <a data-social="Whatsapp" style=" --colors: #25d365;" href="https://wa.me/918427405882?text=Hello%20Raghav!%20I%20saw%20your%20MYWebsite." target="_blank"><i class="ri-whatsapp-line"></i></a>
-      <a data-social="Github" style=" --colors: #333333;" href="https://github.com/Raghav1D" target="_blank"><i class="ri-github-line"></i></a>
-      <a data-social="Instagram" style=" --colors: #fd1d1d;" href="#"><i class="ri-instagram-line"></i></a>
-      <a data-social="Email" style=" --colors: #666;" href="mailto:rajeevdhiman75b@gmail.com?subject=Inquiry%20from%20MYWebsite&body=Hello%20Raghav!%20I%20saw%20your%20MYWebsite."><i class="ri-at-line"></i></a>
+      <a href="https://wa.me/918427405882?text=Hello%20Raghav!%20I%20saw%20your%20MYWebsite." target="_blank"><i class="ri-whatsapp-line"></i></a>
+      <a href="https://github.com/Raghav1D" target="_blank"><i class="ri-github-line"></i></a>
+      <a href="#"><i class="ri-instagram-line"></i></a>
+      <a href="mailto:rajeevdhiman75b@gmail.com?subject=Inquiry%20from%20MYWebsite&body=Hello%20Raghav!%20I%20saw%20your%20MYWebsite."><i class="ri-at-line"></i></a>
     </div>
   </section>
 
@@ -110,9 +106,9 @@
   <!-- Blogs_section -->
   <section id="cont4" aria-labelledby="blogsSectionHeading">
     <div class="content2">
-      <h1 id="blogsSectionHeading">Blogs</h1>
+      <h1 id="blogsSectionHeading">Blogs  </h1>
     </div>
-    <span>Under Development/></span>
+    <p>Under Development/></p>
   </section>
 
 
@@ -154,72 +150,80 @@
 
   <!-- Scripts -->
   <script>
-    const modeToggle = document.getElementById('modeToggle');
-    const modeToggle2 = document.getElementById('modeToggle2');
+   document.addEventListener('DOMContentLoaded', function() {
+            const modeToggle = document.getElementById('modeToggle'); // This button is commented out in your HTML
+            const modeToggle2 = document.getElementById('modeToggle2'); // This button is commented out in your HTML
+            const section = document.querySelector('.section');
+            const menu = document.getElementById('menu');
 
-    // Restore saved theme
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark-mode');
-      modeToggle.innerHTML = `<i class="ri-sun-fill"></i>`;
-    }
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark-mode');
-      modeToggle2.innerHTML = `<i class="ri-sun-fill"></i>`;
-    }
+            // Restore saved theme (These toggles are commented out in your HTML,
+            // so this block won't have any effect unless you uncomment them)
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode'); // This will still add the class if it was saved
+                if (modeToggle) modeToggle.innerHTML = `<i class="ri-sun-fill"></i>`;
+                if (modeToggle2) modeToggle2.innerHTML = `<i class="ri-sun-fill"></i>`;
+            }
 
-    // Toggle dark mode
-    modeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      modeToggle.innerHTML = isDark ? `<i class="ri-sun-fill"></i>` : `<i class="ri-moon-clear-fill"></i>`;
-    });
+            // Toggle dark mode (only if buttons are present)
+            if (modeToggle) {
+                modeToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-mode');
+                    const isDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                    modeToggle.innerHTML = isDark ? `<i class="ri-sun-fill"></i>` : `<i class="ri-moon-clear-fill"></i>`;
+                });
+            }
 
-    if (modeToggle2) {
-      modeToggle2.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        modeToggle2.innerHTML = isDark ? `<i class="ri-sun-fill"></i>` : `<i class="ri-moon-clear-fill"></i>`;
-      });
-    }
+            if (modeToggle2) {
+                modeToggle2.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-mode');
+                    const isDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                    modeToggle2.innerHTML = isDark ? `<i class="ri-sun-fill"></i>` : `<i class="ri-moon-clear-fill"></i>`;
+                });
+            }
 
-    // Scroll nav styling
-    // window.addEventListener("scroll", function () {
-    //   const nav = document.getElementById("nav");
-    //   nav.classList.toggle("scrolled", window.scrollY > 50);
-    // });
+            // Sidebar show/hide - Made them global (window.propertyName) so onclick can find them
+            window.showSection = function() {
+                section.classList.toggle('active');
+                section.style.bottom = section.classList.contains('active') ? '70px' : '-100px';
+                section.style.opacity = section.classList.contains('active') ? '1' : '0';
+            }
 
-    // Sidebar show/hide
-    function showSection() {
-      const section = document.querySelector('.section');
-      const active = section.classList.toggle('active');
-      section.style.bottom = active ? '85px' : '-100px';
-      section.style.opacity = active ? '1' : '0';
-    }
+            window.hideSection = function() {
+                section.classList.remove('active');
+                section.style.bottom = '-100px';
+                section.style.opacity = '0';
+            }
 
-    function hideSection() {
-      const section = document.querySelector('.section');
-      section.classList.remove('active');
-      section.style.bottom = '-100px';
-      section.style.opacity = '0';
-    }
+            document.addEventListener('click', function (e) {
+                // Ensure menu exists before checking contains
+                if (section.classList.contains('active') && !section.contains(e.target) && (!menu || !menu.contains(e.target))) {
+                    hideSection();
+                }
+            });
 
-    document.addEventListener('click', function (e) {
-      const section = document.querySelector('.section');
-      const menu = document.getElementById('menu');
-      if (section.classList.contains('active') && !section.contains(e.target) && !menu.contains(e.target)) {
-        hideSection();
-      }
-    });
+            // Smooth scroll behavior
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
 
-    // Smooth scroll behavior
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+                    if (targetElement) { // Ensure the target element exists
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        // If navigating from mobile menu, hide it
+                        if (section.classList.contains('active')) {
+                            hideSection();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    
   </script>
 
 </body>
