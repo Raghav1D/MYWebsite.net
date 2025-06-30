@@ -657,13 +657,14 @@ li a:hover::after {
     color: var(--text-light-primary);
     width: 100%;
     height: 100%;
-    opacity: 1;
     border-radius: 1000px;
     transition: all 0.3s ease;
 }
 
 #social_links:hover::after {
-    opacity: 0;
+    transform: translateY(-50px);
+    height: 50px;
+    width: 50px;
 }
 
 #social_links a {
