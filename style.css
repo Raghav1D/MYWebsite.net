@@ -94,9 +94,7 @@ body::-webkit-scrollbar-track {
     transform: translate(-50% , 0);
     left: 50%;
     position: absolute;
-    opacity: 0;
     transition: all 0.3s ease;
-    animation: animation1 0.975s 0.9s forwards;
 }
 
 #home {
@@ -870,15 +868,6 @@ li a:hover::after {
 }
 
 /* --- Keyframe Animations --- */
-@keyframes animation1 {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50% , 0);
-    }
-}
 
 @keyframes animation2 {
     from {
