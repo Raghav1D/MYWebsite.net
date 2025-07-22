@@ -1,115 +1,42 @@
-document.addEventListener('DOMContentLoaded', function () {
-     const swiper = new Swiper('.card__swiper-container', {
-         direction: 'horizontal',
-         loop: true,
-         grabCursor: true,
-         spaceBetween: 32,
- 
-         pagination: {
-             el: '.swiper-pagination',
-             clickable: true,
-         },
- 
-         navigation: {
-             nextEl: '.swiper-button-next',
-             prevEl: '.swiper-button-prev',
-         },
- 
-         slidesPerView: 1,
- 
-         breakpoints: {
-             768: {
-                 slidesPerView: 2,
-                 spaceBetween: 40,
-             },
-             1024: {
-                 slidesPerView: 3,
-                 spaceBetween: 50,
-             }
-         },
- 
-         autoplay: {
-             delay: 5000,
-             disableOnInteraction: false,
-         },
- 
-         a11y: {
-             prevSlideMessage: 'Previous slide',
-             nextSlideMessage: 'Next slide',
-             firstSlideMessage: 'This is the first slide',
-             lastSlideMessage: 'This is the last slide',
-             paginationBulletMessage: 'Go to slide {{index}}',
-         },
- 
-         keyboard: {
-             enabled: true,
-             onlyInViewport: true,
-         },
- 
-         mousewheel: {
-             invert: true,
-         },
-     });
- 
-     const modeToggle = document.getElementById('modeToggle');
-     const modeToggle2 = document.getElementById('modeToggle2');
-     const section = document.querySelector('.section');
-     const menu = document.getElementById('menu');
- 
-     if (localStorage.getItem('theme') === 'dark') {
-         document.body.classList.add('dark-mode');
-         if (modeToggle) modeToggle.innerHTML = `<i class="ri-sun-fill"></i>`;
-         if (modeToggle2) modeToggle2.innerHTML = `<i class="ri-sun-fill"></i>`;
-     }
- 
-     if (modeToggle) {
-         modeToggle.addEventListener('click', () => {
-             document.body.classList.toggle('dark-mode');
-             const isDark = document.body.classList.contains('dark-mode');
-             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-             modeToggle.innerHTML = isDark ? `<i class="ri-sun-fill"></i>` : `<i class="ri-moon-clear-fill"></i>`;
-         });
-     }
- 
-     if (modeToggle2) {
-         modeToggle2.addEventListener('click', () => {
-             document.body.classList.toggle('dark-mode');
-             const isDark = document.body.classList.contains('dark-mode');
-             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-             modeToggle2.innerHTML = isDark ? `<i class="ri-sun-fill"></i>` : `<i class="ri-moon-clear-fill"></i>`;
-         });
-     }
- 
-     window.showSection = function () {
-         section.classList.toggle('active');
-         section.style.bottom = section.classList.contains('active') ? '70px' : '-100px';
-         section.style.opacity = section.classList.contains('active') ? '1' : '0';
-     }
- 
-     window.hideSection = function () {
-         section.classList.remove('active');
-         section.style.bottom = '-100px';
-         section.style.opacity = '0';
-     }
- 
-     document.addEventListener('click', function (e) {
-         if (section.classList.contains('active') && !section.contains(e.target) && (!menu || !menu.contains(e.target))) {
-             hideSection();
-         }
-     });
- 
-     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-         anchor.addEventListener('click', function (e) {
-             e.preventDefault();
-             const targetId = this.getAttribute('href');
-             const targetElement = document.querySelector(targetId);
- 
-             if (targetElement) {
-                 targetElement.scrollIntoView({ behavior: 'smooth' });
-                 if (section.classList.contains('active')) {
-                     hideSection();
-                 }
-             }
-         });
-     });
- });
+const sections = document.querySelectorAll('section[id]');
+  const sidebar = document.querySelector('.sidebar');
+  const main = document.querySelector('.main');
+
+  function scrollActive() {
+    const scrollY = window.pageYOffset;
+  
+    sections.forEach(section => {
+      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop - 55;
+      const sectionId = section.getAttribute('id');
+  
+      const link = document.querySelector(`.sidebar_ul a[href*="${sectionId}"]`);
+      if (!link) return;
+  
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        link.classList.add('active-link');
+      } else {
+        link.classList.remove('active-link');
+      }
+    });
+  }
+
+  let debounceTimeout;
+  window.addEventListener('scroll', () => {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(scrollActive, 55);
+  });
+
+  window.toggleSidebar = function () {
+    const isActive = sidebar.classList.toggle('active');
+    main.classList.toggle('active', isActive);
+  };
+
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar_Y');
+    if (window.scrollY > 10) {
+      navbar.classList.add('shadow');
+    } else {
+      navbar.classList.remove('shadow');
+    }
+  });
