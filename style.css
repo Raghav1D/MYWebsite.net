@@ -104,10 +104,10 @@ body{
     position: fixed;
     width: 55px;
     height: 95%;
-    transform: translate(-50% , -50%);
-    left: 3%;
+    transform: translate(0% , -50%);
+    left: 2%;
     top: 50%;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: var(--navbar);
     box-shadow: -6px 10px 12px rgba(4, 13, 18, 0.2);
     border-top: 1px solid #f2f2f36e;
@@ -125,6 +125,7 @@ body{
     height: 100%;
     width: 100%;
     gap: 30px;
+    border-radius: 15px;
     padding: 0 20px;
   }
 
