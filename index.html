@@ -4,40 +4,30 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Project@25</title>
-<link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="style.css">
+<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="style_V8.css">
 </head>
 <body>
+  <header>
+    <nav class="navbar">
+      <ul class="ul">
+        <li id="logo"><a href="#home">LOGO</a></li>
+        <li id="nav_links"><a href="#home" class="active-link"><i class='bx  bx-home' style="font-size: 1.5rem;"></i><span>Home</span></a></li>
+        <li id="nav_links"><a href="#about"><i class='bx  bx-user' style="font-size: 1.5rem;"></i><span>About</span></a></li>
+        <li id="nav_links"><a href="#projects"><i class="bx bx-code-alt" style="font-size: 1.5rem;"></i><span>Projects</span></a></li>
+        <li id="nav_links"><a href="#blog"><i class='bx  bx-newspaper' style="font-size: 1.5rem;"></i><span>Blogs</span></a></li>
+      </ul>
+    </nav>
+  </header>
 
-     <nav class="sidebar">
-          <button id="sidebar-close" onclick="toggleSidebar()">✕</button>
-       <ul class="sidebar_ul">
-         <li id="nav_links" onclick="toggleSidebar()"><a href="#home" class="active-link"><i class="bx bx-home"></i>Home</a></li>
-         <li id="nav_links" onclick="toggleSidebar()"><a href="#about"><i class="bx bx-badge"></i> About</a></li>
-         <li id="nav_links" onclick="toggleSidebar()"><a href="#projects"><i class="bx bx-code-alt"></i> Projects</a></li>
-         <li id="nav_links" onclick="toggleSidebar()"><a href="#blogs"><i class="bx bx-news"></i> Blogs</a></li>
-         <li id="nav_links" onclick="toggleSidebar()"  ><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
-       </ul>
-     </nav>
-   
-     <main class="main">
-       <nav class="navbar_Y" id="navbar_Y">
-         <ul class="navbar_Y_ul">
-           <li id="logo"><a href="#home">LOGO</a></li>
-           <button id="toggle" onclick="toggleSidebar()">
-             <i class='bx bx-dots-horizontal-rounded'></i>
-           </button>
-         </ul>
-       </nav>
-   
-       <section id="home"><h1>Home</h1></section>
-       <section id="about"><h1>About</h1></section>
-       <section id="projects"><h1>Projects</h1></section>
-       <section id="blogs"><h1>Blogs</h1></section>
-       <section id="contact"><h1>Contact</h1></section>
-     </main>
-   
-    <script src="main.js"></script>
-
+  <main class="main">
+    <section class="section" id="home">
+      <h1>Home</h1>
+    </section>
+    <section class="section" id="about"><h1>About</h1></section>
+    <section class="section" id="projects"><h1>Projects</h1></section>
+    <section class="section" id="blog"><h1>Blogs</h1></section>
+  </main>
+<script src="main.js"></script>
 </body>
 </html>
