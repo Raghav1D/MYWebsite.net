@@ -1,42 +1,69 @@
-const sections = document.querySelectorAll('section[id]');
-  const sidebar = document.querySelector('.sidebar');
-  const main = document.querySelector('.main');
+// const sections = document.querySelectorAll('section[id]')
 
-  function scrollActive() {
-    const scrollY = window.pageYOffset;
-  
-    sections.forEach(section => {
-      const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 55;
-      const sectionId = section.getAttribute('id');
-  
-      const link = document.querySelector(`.sidebar_ul a[href*="${sectionId}"]`);
-      if (!link) return;
-  
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        link.classList.add('active-link');
-      } else {
-        link.classList.remove('active-link');
-      }
-    });
-  }
+// function scrollActive(){
+//     const scrollY = window.pageYOffset
 
-  let debounceTimeout;
-  window.addEventListener('scroll', () => {
-    clearTimeout(debounceTimeout);
-    debounceTimeout = setTimeout(scrollActive, 55);
-  });
+//     sections.forEach(current =>{
+//         const sectionHeight = current.offsetHeight,
+//               sectionBottom = current.offsetTop - 60,
+//               sectionId = current.getAttribute('id')
 
-  window.toggleSidebar = function () {
-    const isActive = sidebar.classList.toggle('active');
-    main.classList.toggle('active', isActive);
-  };
+//         if(scrollY > sectionBottom && scrollY <= sectionBottom + sectionHeight){
+//             document.querySelector('.ul a[href*=' + sectionId + ']').classList.add('active-link')
+//         }else{
+//             document.querySelector('.ul a[href*=' + sectionId + ']').classList.remove('active-link')
+//         }
+//     })
+// }
+// window.addEventListener('scroll', scrollActive)
 
-  window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar_Y');
-    if (window.scrollY > 10) {
-      navbar.classList.add('shadow');
+// Get the current dark mode state from local storage
+let darkMode = localStorage.getItem('darkMode');
+
+// Select all buttons with the dark-mode-toggle class
+const darkModeToggles = document.querySelectorAll('.dark-mode-toggle');
+
+// Function to enable dark mode
+const enableDarkMode = () => {
+  document.body.classList.add('darkmode');
+  localStorage.setItem('darkMode', 'enabled');
+};
+
+// Function to disable dark mode
+const disableDarkMode = () => {
+  document.body.classList.remove('darkmode');
+  localStorage.removeItem('darkMode');
+};
+
+// Check if dark mode was already active on page load
+if (darkMode === 'enabled') {
+  enableDarkMode();
+}
+
+// Add a click event listener to each button
+darkModeToggles.forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    // Re-check the current state
+    darkMode = localStorage.getItem('darkMode');
+
+    // Toggle the dark mode based on the current state
+    if (darkMode !== 'enabled') {
+      enableDarkMode();
     } else {
-      navbar.classList.remove('shadow');
+      disableDarkMode();
     }
   });
+});
+
+
+window.onscroll = function() {
+     scrollFunction();
+   };
+ 
+   function scrollFunction() {
+     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+       document.getElementById("navbar2").style.top = "-50px"; // Show the navbar
+     } else {
+       document.getElementById("navbar2").style.top = "0px"; // Hide the navbar
+     }
+   }
