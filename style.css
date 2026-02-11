@@ -271,21 +271,14 @@ header > nav > ul{
 .main{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
-    transform: translate(-50% , -50%);
-    left: 50%;
-    top: 50%;
+    height: 100vh;
+    width: 100%;
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
-    position: fixed;
-    height: 98vh;
-    width: 96%;
-    border: 2px solid #9999998a;
-    border-radius: 20px;
     scroll-behavior: smooth;
     transition: all 0.3s ease;
 }
@@ -619,21 +612,14 @@ a.active-link:active::after{
 .main{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
-    transform: translate(-50% , -50%);
-    left: 50%;
-    top: 50%;
     overflow-y: auto;
+    height: 100vh;
+    width: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
-    position: fixed;
-    height: 98vh;
-    width: 96%;
-    border: 2px solid #9999998a;
-    border-radius: 20px;
     scroll-behavior: smooth;
     transition: all 0.3s ease;
 }
