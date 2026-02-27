@@ -47,7 +47,7 @@ function updateThemeUI() {
 
   // 1. Update Logo
   if (logo) {
-    logo.src = isDark ? "LOGO.png" : "LOGO2.png";
+    logo.src = isDark ? "LOGO.webp" : "LOGO2.webp";
   }
 
   // 2. Update Icon Rotation
