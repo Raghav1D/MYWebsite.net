@@ -64,6 +64,7 @@ body.light .theme_box {
 .nav_box2,
 .logo_box,
 .theme_box {
+    
     background-color: var(--glass-bg);
     -webkit-backdrop-filter: blur(12px) saturate(150%);
     backdrop-filter: blur(12px) saturate(150%);
@@ -100,8 +101,6 @@ body {
     color: var(--text-muted);
     scroll-behavior: smooth;
     transition: all 0.3s ease;
-    /* overflow: hidden; */
-    z-index: -1;
 }
 
 /* ==========================================================================
@@ -110,8 +109,7 @@ body {
 
 header {
     position: fixed;
-    bottom: 2%;
-    /* For mobile */
+    bottom: 1%;
     left: 0;
     right: 0;
     margin-inline: auto;
@@ -148,11 +146,13 @@ header>nav>ul {
 
 .nav_box {
     display: flex;
-    justify-content: space-evenly;
-    gap: 12px;
+    justify-content: center;
     align-items: center;
-    border-radius: 10000px;
+    gap: 8px;
+    /* border-radius: 10000px; */
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* background-color: red; */
+    width: 100%;
 }
 
 .nav_box2 {
@@ -161,7 +161,7 @@ header>nav>ul {
     align-items: center;
     border-radius: 100000px;
     height: 100%;
-    min-width: 280px;
+    min-width: 70%;
 }
 
 /* --- Nav Links & SVGs --- */
@@ -206,8 +206,8 @@ header>nav>ul {
 .active-link::after {
     position: absolute;
     content: '';
-    height: 45px;
-    width: 70px;
+    height: 43px;
+    width: 65px;
     background-color: var(--hover1);
     border-top: 1px solid var(--hover2);
     box-shadow: 0 4px 6px var(--shadow2);
@@ -226,6 +226,7 @@ header>nav>ul {
 
 .logo_box {
     position: fixed;
+    display: none;
     top: calc(env(safe-area-inset-top) + -90vh);
     left: calc(env(safe-area-inset-left) + 13%);
     transform: translateX(-50%);
@@ -265,7 +266,7 @@ header>nav>ul {
     align-items: center;
     border-radius: 100000px;
     height: 100%;
-    width: 72px;
+    width: 65px;
 }
 
 .theme_box {
@@ -385,7 +386,9 @@ header>nav>ul {
     .nav_box {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly !important;
+        gap: 12px !important;
+        width: auto !important;
     }
 
     .nav_box2 {
@@ -476,7 +479,7 @@ header>nav>ul {
 
     .logo_box {
         position: relative !important;
-        display: flex;
+        display: flex !important;
         justify-content: center;
         align-items: center;
         transform: translateX(0px) !important;
@@ -560,4 +563,3 @@ header>nav>ul {
         padding: 20px;
     }
 }
-
