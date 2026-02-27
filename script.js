@@ -1,52 +1,77 @@
-// Select all nav links
-const navLinks = document.querySelectorAll('.nav_box > li > a');
+/* ==========================================================================
+   1. NAVIGATION: ACTIVE LINK ON SCROLL
+   ========================================================================== */
 
-// Select all sections
+const navLinks = document.querySelectorAll('.nav_box2 li a');
 const sections = document.querySelectorAll('.sections');
 
-// Create an Intersection Observer
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Remove active class from all links
-        navLinks.forEach(link => link.classList.remove('active-link'));
+const observerOptions = {
+  // 60% visibility triggers the change
+  threshold: 0.6
+};
 
-        // Highlight the link that matches the section in view
-        const activeLink = document.querySelector(`.nav_box > li > a[href="#${entry.target.id}"]`);
-        if (activeLink) {
-          activeLink.classList.add('active-link');
-        }
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Remove active class from all
+      navLinks.forEach(link => link.classList.remove('active-link'));
+
+      // Find and add to current
+      const id = entry.target.getAttribute('id');
+      const activeLink = document.querySelector(`.nav_box2 li a[href="#${id}"]`);
+
+      if (activeLink) {
+        activeLink.classList.add('active-link');
       }
-    });
-  },
-  {
-    threshold: 0.6 // section is considered active when 60% visible
-  }
-);
+    }
+  });
+}, observerOptions);
 
-// Observe each section
-sections.forEach(section => {
-  observer.observe(section);
-});
+sections.forEach(section => sectionObserver.observe(section));
+
+
+/* ==========================================================================
+   2. THEME TOGGLE: WITH LOCALSTORAGE PERSISTENCE
+   ========================================================================== */
 
 const themeToggleBtn = document.getElementById('theme-toggle');
-const icon = document.querySelector('.theme-toggle_icon');
+const themeIcon = document.querySelector('.theme-toggle_icon');
 const body = document.body;
-const logo = document.getElementById('logo'); // select logo
+const logo = document.getElementById('logo');
 
-// Theme toggle + icon rotation
+/**
+ * Updates the UI based on the current theme
+ */
+function updateThemeUI() {
+  const isDark = body.classList.contains('dark');
+
+  // 1. Update Logo
+  if (logo) {
+    logo.src = isDark ? "LOGO.png" : "LOGO2.png";
+  }
+
+  // 2. Update Icon Rotation
+  if (isDark) {
+    themeIcon.classList.remove('rotate');
+  } else {
+    themeIcon.classList.add('rotate');
+  }
+
+  // 3. Save to localStorage
+  localStorage.setItem('theme-preference', isDark ? 'dark' : 'light');
+}
+
+// Check for saved theme on page load
+const savedTheme = localStorage.getItem('theme-preference');
+if (savedTheme) {
+  body.classList.remove('dark', 'light');
+  body.classList.add(savedTheme);
+  updateThemeUI();
+}
+
+// Click Event Listener
 themeToggleBtn.addEventListener('click', () => {
   body.classList.toggle('dark');
   body.classList.toggle('light');
-
-  // Rotate the icon inside the button
-  icon.classList.toggle('rotate');
-
-  // Change logo depending on theme
-  if (body.classList.contains('dark')) {
-    logo.src = "LOGO.png"; // dark theme logo
-  } else {
-    logo.src = "LOGO2.png";  // light theme logo
-  }
+  updateThemeUI();
 });
