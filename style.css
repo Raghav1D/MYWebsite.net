@@ -513,6 +513,7 @@ header>nav>ul {
     /* --- Desktop Theme Toggle --- */
 
     .theme_box2 {
+        width: 72px !important;
         border-radius: 10000px;
     }
 
