@@ -31,7 +31,7 @@ body.dark {
     --glass-bg: hsla(265, 30%, 15%, 0.12);
     --text: hsl(260, 10%, 98%);
     --text-muted: hsl(260, 15%, 75%);
-    --hover1: hsla(270, 70%, 70%, 0.1); 
+    --hover1: hsla(270, 70%, 70%, 0.1);
     --hover2: hsla(270, 70%, 60%, 0.3);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     --shadow2: 0 0 20px hsla(270, 70%, 50%, 0.2);
@@ -72,18 +72,19 @@ body.light .theme_box {
     box-shadow: var(--shadow);
     transition: var(--transition-main);
     -webkit-backface-visibility: hidden;
-    transform: translateZ(0); 
+    transform: translateZ(0);
 }
 
 @supports not (backdrop-filter: blur(1px)) {
-  .nav_box2,
-  .logo_box,
-  .theme_box {
-    background-color: var(--bg-light);
-  }
+
+    .nav_box2,
+    .logo_box,
+    .theme_box {
+        background-color: var(--bg-light);
+    }
 }
 
-.theme_box2{
+.theme_box2 {
     border: none;
 }
 
@@ -109,7 +110,8 @@ body {
 
 header {
     position: fixed;
-    bottom: 1%; /* For mobile */
+    bottom: 1%;
+    /* For mobile */
     left: 0;
     right: 0;
     margin-inline: auto;
@@ -227,7 +229,7 @@ header>nav>ul {
     top: calc(env(safe-area-inset-top) + -90vh);
     left: calc(env(safe-area-inset-left) + 13%);
     transform: translateX(-50%);
-    
+
     height: 44px;
     width: auto;
     padding: 0 20px;
@@ -236,24 +238,24 @@ header>nav>ul {
     z-index: 1100;
 }
 
-    .logo_box>li,
-    .logo_box>li>a,
-    .logo_box>li>a>.image_logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        border-radius: 10000px;
-    }
+.logo_box>li,
+.logo_box>li>a,
+.logo_box>li>a>.image_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 10000px;
+}
 
-    .logo_box>li>a {
-        width: 100%;
-        border-radius: 1000px;
-    }
+.logo_box>li>a {
+    width: 100%;
+    border-radius: 1000px;
+}
 
-    .logo_box>li>a>.image_logo {
-        width: auto;
-    }
+.logo_box>li>a>.image_logo {
+    width: auto;
+}
 
 /* --- Theme Toggle --- */
 
@@ -345,12 +347,12 @@ header>nav>ul {
    7. KEYFRAMES
    ========================================================================== */
 
-@keyframes animate1{
-    from{
+@keyframes animate1 {
+    from {
         opacity: 0;
     }
 
-    to{
+    to {
         opacity: 1;
         transform: translate(-50%, 0%) scale(1, 1);
     }
@@ -451,7 +453,7 @@ header>nav>ul {
     .active-link::after {
         height: 5px;
         width: 23px;
-        transform: translate(-50% , 0) scale(.6 , .6) !important;
+        transform: translate(-50%, 0) scale(.6, .6) !important;
         animation: none !important;
         opacity: 1 !important;
         background-color: var(--text);
@@ -542,7 +544,7 @@ header>nav>ul {
         transform: translate(-50%, 0%) scale(1, 1);
     }
 
-    .main{
+    .main {
         overflow-y: auto;
         scrollbar-width: none;
         -ms-overflow-style: none;
@@ -551,7 +553,7 @@ header>nav>ul {
         scroll-behavior: smooth;
     }
 
-    .sections{
+    .sections {
         display: flex;
         justify-content: center;
         align-items: center;
