@@ -110,7 +110,7 @@ body {
 
 header {
     position: fixed;
-    bottom: 1%;
+    bottom: 2%;
     /* For mobile */
     left: 0;
     right: 0;
@@ -560,3 +560,4 @@ header>nav>ul {
         padding: 20px;
     }
 }
+
