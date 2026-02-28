@@ -28,13 +28,13 @@ body.dark {
     --bg-dark2: hsl(260, 20%, 10%);
     --bg: hsl(260, 15%, 11%);
     --bg-light: hsl(260, 15%, 18%);
-    --glass-bg: hsla(265, 30%, 15%, 0.12);
+    --glass-bg: hsla(265, 30%, 15%, 0.027);
     --text: hsl(260, 10%, 98%);
     --text-muted: hsl(260, 15%, 75%);
-    --hover1: hsla(270, 70%, 70%, 0.1);
+    --hover1: hsla(270, 70%, 70%, 0.2);
     --hover2: hsla(270, 70%, 60%, 0.3);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --shadow2: 0 0 20px hsla(270, 70%, 50%, 0.2);
+    --shadow2: 0 8 2px hsla(270, 70%, 50%, 0.2);
 }
 
 body.light {
@@ -42,20 +42,13 @@ body.light {
     --bg-dark2: hsl(265, 30%, 90%);
     --bg: hsl(265, 20%, 92%);
     --bg-light: hsl(265, 20%, 94%);
-    --glass-bg: hsla(265, 100%, 100%, 0.15);
+    --glass-bg: hsla(265, 100%, 100%, 0.027);
     --text: hsl(265, 50%, 15%);
     --text-muted: hsl(265, 20%, 45%);
     --hover1: hsla(270, 50%, 40%, 0.08);
     --hover2: hsla(270, 50%, 40%, 0.15);
-    --shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
-    --shadow2: 0 0 15px rgba(100, 50, 150, 0.05);
-}
-
-body.light .nav_box2,
-body.light .logo_box,
-body.light .theme_box {
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-top: 1.5px solid rgba(255, 255, 255, 0.8);
+    --shadow: 3px 3px 3px rgba(0, 0, 0, 0.07);
+    --shadow2: 0 3px 3px rgba(100, 50, 150, 0.05);
 }
 
 /* ==========================================================================
@@ -64,12 +57,13 @@ body.light .theme_box {
 .nav_box2,
 .logo_box,
 .theme_box {
-    
+
     background-color: var(--glass-bg);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
-    backdrop-filter: blur(12px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-top: 1.5px solid rgba(255, 255, 255, 0.3);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: var(--shadow);
     transition: var(--transition-main);
     -webkit-backface-visibility: hidden;
@@ -210,7 +204,8 @@ header>nav>ul {
     width: 65px;
     background-color: var(--hover1);
     border-top: 1px solid var(--hover2);
-    box-shadow: 0 4px 6px var(--shadow2);
+    border-left: 0.09px solid var(--hover2);
+    box-shadow: var(--shadow2);
     transform: translate(-50%, 0%) scale(.6, .6);
     opacity: 0;
     border-radius: 100000px;
@@ -419,7 +414,8 @@ header>nav>ul {
         border-radius: 10000px;
         background-color: var(--hover1);
         border-top: 1px solid var(--hover2);
-        box-shadow: 0 4px 6px var(--shadow2);
+        border-left: 0.09px solid var(--hover2);
+        box-shadow: var(--shadow2);
         transform: translate(-50%, 0%) scale(.8, .8);
         opacity: 0;
         left: 50%;
@@ -454,19 +450,21 @@ header>nav>ul {
     /* --- Desktop Active Link --- */
 
     .active-link::after {
-        height: 5px;
+        height: 4px;
         width: 23px;
         transform: translate(-50%, 0) scale(.6, .6) !important;
         animation: none !important;
         opacity: 1 !important;
         background-color: var(--text);
+        border-radius: 10000px;
         bottom: -10.5px;
         left: 50%;
         z-index: -1;
+        opacity: 0;
     }
 
     .active-link:hover::after {
-        height: 3px;
+        height: 2.8px;
         width: 36px;
     }
 
@@ -535,7 +533,8 @@ header>nav>ul {
         border-radius: 10000px;
         background-color: var(--hover1);
         border-top: 1px solid var(--hover2);
-        box-shadow: 0 4px 6px var(--shadow2);
+        border-left: 0.09px solid var(--hover2);
+        box-shadow: var(--shadow2);
         transform: translate(-50%, 0%) scale(.8, .8);
         opacity: 0;
         left: 50%;
