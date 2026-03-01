@@ -339,6 +339,134 @@ header>nav>ul {
     transition: all 0.3s ease;
 }
 
+#home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 8%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: auto;
+    gap: 40px;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.h1 span {
+    display: block;
+    animation: reveal2 1.2s 1s cubic-bezier(0.87, 0, 0.175, 1.2) forwards;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+}
+
+.h1 span:first-child {
+    animation: reveal1 1.2s 0.5s cubic-bezier(0.87, 0, 0.175, 1.2) forwards;
+    opacity: 0;
+}
+
+@keyframes reveal1 {
+    0% {
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.h1 span:last-child {
+    background: linear-gradient(135deg, var(--text), var(--text), var(--text-muted), var(--bg));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.h1 span:last-child:hover {
+    /* cursor: pointer; */
+}
+
+@keyframes reveal2 {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#home>.hero_content>.h1 {
+    overflow: hidden;
+    text-align: left;
+    font-size: clamp(3rem, 16vw, 20rem);
+    font-weight: bolder;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin: 0;
+    flex: 1;
+    padding-left: 6px;
+    transition: all 0.3s ease;
+}
+
+.sub_description {
+    position: absolute;
+    right: 4%;
+    bottom: 30%;
+}
+
+.animated_svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(5rem, 12vw, 15rem) !important;
+    border-radius: 1000px;
+    /* background-color: yellow; */
+    color: var(--text);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    transform: scale(0, 0);
+    animation: animated_svg 1.8s forwards cubic-bezier(0.87, 0, 0.175, 1.2);
+}
+
+@keyframes animated_svg {
+    0% {
+        transform: scale(0, 0);
+    }
+
+    60% {
+        transform: scale(1, 1);
+    }
+
+    100% {
+        rotate: 360deg;
+        transform: scale(0, 0);
+    }
+}
+
+.animated_line1 {
+    position: absolute;
+    display: none;
+}
+
+.animated_line2 {
+    position: absolute;
+    display: none;
+}
+
+
 /* ==========================================================================
    7. KEYFRAMES
    ========================================================================== */
@@ -356,10 +484,10 @@ header>nav>ul {
 
 
 /* ==========================================================================
-   8. MEDIA QUERIES (Desktop / 780px+)
+   8. MEDIA QUERIES (Desktop / 825px+)
    ========================================================================== */
 
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 825px) {
 
     header {
         position: fixed;
@@ -560,6 +688,191 @@ header>nav>ul {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        color: var(--text);
+        transition: all 0.3s ease;
     }
+
+    #home {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 0 8%;
+        position: relative;
+    }
+
+    .hero_content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: auto;
+        gap: 40px;
+        position: absolute;
+        transition: all 0.3s ease;
+    }
+
+    .h1 span {
+        display: block;
+        animation: reveal2 1.2s 1s cubic-bezier(0.87, 0, 0.175, 1.2) forwards;
+        transform: translateY(100%);
+        transition: all 0.3s ease;
+    }
+
+    .h1 span:first-child {
+        animation: reveal1 1.2s 0.5s cubic-bezier(0.87, 0, 0.175, 1.2) forwards;
+        opacity: 0;
+    }
+
+    @keyframes reveal1 {
+        0% {
+            opacity: 0;
+        }
+
+        70% {
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .h1 span:last-child {
+        background: linear-gradient(135deg, var(--text), var(--text), var(--text-muted), var(--bg));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .h1 span:last-child:hover {
+        /* cursor: pointer; */
+    }
+
+    @keyframes reveal2 {
+        0% {
+            transform: translateY(100%);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    #home>.hero_content>.h1 {
+        overflow: hidden;
+        text-align: left;
+        font-size: clamp(5rem, 15vw, 20rem);
+        font-weight: bolder;
+        line-height: 0.85;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        margin: 0;
+        flex: 1;
+        padding-left: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .hero_content {
+        /* background-color: red; */
+    }
+
+    .sub_description {
+        position: absolute;
+        right: 6%;
+        bottom: 10%;
+        /* background-color: red; */
+    }
+
+    .animated_svg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: clamp(5rem, 12vw, 15rem) !important;
+        border-radius: 1000px;
+        /* background-color: yellow; */
+        color: var(--text);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        transform: scale(0, 0);
+        animation: animated_svg 1.8s forwards cubic-bezier(0.87, 0, 0.175, 1.2);
+    }
+
+    @keyframes animated_svg {
+        0% {
+            transform: scale(0, 0);
+        }
+
+        60% {
+            transform: scale(1, 1);
+        }
+
+        100% {
+            rotate: 360deg;
+            transform: scale(0, 0);
+        }
+    }
+
+    .animated_line1 {
+        position: absolute;
+        display: flex !important;
+        width: 4px;
+        height: 100%;
+        transform: scaleY(0);
+        transform-origin: top;
+        right: 3%;
+        top: 10%;
+        border-radius: 1000px;
+        background-color: var(--text-muted);
+        transition: all 0.3s ease;
+        animation: animated_line1 2s forwards cubic-bezier(0.87, 0, 0.175, 1.2);
+    }
+
+    @keyframes animated_line1 {
+        0% {
+            transform: scaleY(0);
+        }
+
+        60% {
+            transform: scaleY(1);
+        }
+
+        100% {
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+
+    }
+
+    .animated_line2 {
+        position: absolute;
+        display: flex !important;
+        height: 4px;
+        width: 100%;
+        left: 10%;
+        transform: scaleX(0);
+        transform-origin: left;
+        border-radius: 10000px;
+        background-color: var(--text-muted);
+        bottom: 6%;
+        transition: all 0.3s ease;
+        animation: animated_line2 2s forwards cubic-bezier(0.87, 0, 0.175, 1.2);
+    }
+
+    @keyframes animated_line2 {
+        0% {
+            transform: scaleX(0);
+        }
+
+        60% {
+            transform: scaleX(1);
+        }
+
+        100% {
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+    }
+
 }
