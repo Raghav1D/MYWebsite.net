@@ -419,10 +419,22 @@ header>nav>ul {
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    scroll-behavior: auto;
     scroll-snap-type: none;
-    transition: var(--transition-main);
+    scroll-behavior: auto;
     animation: scroll_main 0.1ms 3s forwards ease;
+}
+
+.main::-webkit-scrollbar {
+    display: none;
+}
+
+.main.snap-enabled {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.sections {
+    scroll-snap-align: start;
 }
 
 @keyframes scroll_main {
