@@ -3,60 +3,75 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="NOTHING YET!!!">
+  <meta name="description" content="Personal Portfolio - Built with Curiosity.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>MYWebsite</title>
+  <script>
+    const savedTheme = localStorage.getItem('theme-preference') || 'dark';
+    document.documentElement.classList.add(savedTheme);
+  </script>
 </head>
 
-<body class="dark">
+<body>
+  <div class="overlay">
+    <div class="loading_animation_container">
+      <div class="animated_line"></div>
+    </div>
+    <p id="quote-display">In The Quiet Of A Focused Mind, Curiosity Finds Its Voice.</p>
+  </div>
   <header>
     <nav>
       <ul>
         <div class="logo_box">
           <li>
             <a href="#home">
-              <img src="LOGO.webp" class="image_logo" id="logo" height="70" weight="70" alt="Main Logo.">
+              <img src="LOGO.webp" class="image_logo" id="logo" height="70" width="70" alt="Home">
             </a>
           </li>
         </div>
+
         <div class="nav_box">
           <div class="nav_box2">
             <li>
               <a class="active-link" href="#home">
-                <svg class="svg_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960"
+                <svg class="svg_icon" aria-hidden="true" focusable="false" height="1em" viewBox="0 -960 960 960"
                   width="1em">
                   <path
                     d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z" />
                 </svg>
-                <span>Home</span></a>
+                <span>Home</span>
+              </a>
             </li>
             <li>
               <a href="#about">
-                <svg class="svg_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960"
+                <svg class="svg_icon" aria-hidden="true" focusable="false" height="1em" viewBox="0 -960 960 960"
                   width="1em">
                   <path
                     d="M367-527q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm296.5-343.5Q560-607 560-640t-23.5-56.5Q513-720 480-720t-56.5 23.5Q400-673 400-640t23.5 56.5Q447-560 480-560t56.5-23.5ZM480-640Zm0 400Z" />
                 </svg>
-                <span>About</span></a>
+                <span>About</span>
+              </a>
             </li>
             <li>
               <a href="#projects">
-                <svg class="svg_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960"
+                <svg class="svg_icon" aria-hidden="true" focusable="false" height="1em" viewBox="0 -960 960 960"
                   width="1em">
                   <path
                     d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z" />
                 </svg>
-                <span>Projects</span></a>
+                <span>Projects</span>
+              </a>
             </li>
             <li>
               <a href="#blogs">
-                <svg class="svg_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960"
+                <svg class="svg_icon" aria-hidden="true" focusable="false" height="1em" viewBox="0 -960 960 960"
                   width="1em">
                   <path
                     d="M160-120q-33 0-56.5-23.5T80-200v-240q0-17 11.5-28.5T120-480q17 0 28.5 11.5T160-440v240h320q17 0 28.5 11.5T520-160q0 17-11.5 28.5T480-120H160Zm160-160q-33 0-56.5-23.5T240-360v-240q0-17 11.5-28.5T280-640q17 0 28.5 11.5T320-600v240h320q17 0 28.5 11.5T680-320q0 17-11.5 28.5T640-280H320Zm160-160q-33 0-56.5-23.5T400-520v-240q0-33 23.5-56.5T480-840h320q33 0 56.5 23.5T880-760v240q0 33-23.5 56.5T800-440H480Zm0-80h320v-160H480v160Z" />
                 </svg>
-                <span>Blogs</span></a>
+                <span>Blogs</span>
+              </a>
             </li>
           </div>
 
@@ -85,34 +100,34 @@
         </h1>
       </div>
       <div class="sub_description">
-        <p>
+        <svg class="animated_svg" aria-hidden="true" height="60" viewBox="0 -960 960 960" width="60"
+          fill="currentColor">
+          <path
+            d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
+        </svg>
 
-          <svg class="animated_svg" xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960"
-            width="60px" fill="currentColor">
-            <path
-              d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
-          </svg>
-
-        </p>
-
+        <div class="scroll_down">
+          <a class="scroll_down_link" href="#about">
+            <svg class="animated_scroll_svg" aria-hidden="true" height="32" viewBox="0 -960 960 960" width="32"
+              fill="currentColor">
+              <path
+                d="M440-313v-447q0-17 11.5-28.5T480-800q17 0 28.5 11.5T520-760v447l196-196q12-12 28-11.5t28 12.5q11 12 11.5 28T772-452L508-188q-6 6-13 8.5t-15 2.5q-8 0-15-2.5t-13-8.5L188-452q-11-11-11-27.5t11-28.5q12-12 28.5-12t28.5 12l195 195Z" />
+            </svg>
+            <span>Scroll Down</span>
+          </a>
+        </div>
       </div>
 
       <div class="animated_line1"></div>
       <div class="animated_line2"></div>
-      <!-- </div> -->
     </section>
 
-    <section class="sections" id="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, sapiente
-      ipsum laboriosam delectus iusto debitis ab minima dolores sed culpa non architecto fugiat, rem consequatur dolorem
-      iure sequi quae voluptas.</section>
+    <section class="sections" id="about">
+    </section>
     <section class="sections" id="projects">projects</section>
     <section class="sections" id="blogs">blogs</section>
-    <!-- <footer></footer> -->
   </main>
-
   <script src="script.js" defer></script>
-
-
 </body>
 
 </html>
