@@ -17,11 +17,10 @@ const App = {
   get sections() { return document.querySelectorAll('.sections'); },
   get navLinks() { return document.querySelectorAll('.nav_box2 li a'); },
 
+  // 2. INITIALIZATION
   init() {
     this.checkPerformance();
     this.applyInitialTheme();
-
-    // Pick a quote immediately
     this.initQuotes();
 
     if (document.readyState === 'loading') {
@@ -38,19 +37,24 @@ const App = {
     document.body.classList.add('app-ready');
   },
 
-  // 2. QUOTE LOGIC
+  // 3. QUOTE LOGIC
   initQuotes() {
     const quoteElement = document.getElementById("quote-display");
     if (quoteElement) {
-      const randomIndex = Math.floor(Math.random() * this.quotes.length);
-      quoteElement.innerText = this.quotes[randomIndex];
+      const setQuote = () => {
+        const randomIndex = Math.floor(Math.random() * this.quotes.length);
+        quoteElement.innerText = this.quotes[randomIndex];
+      };
+      setQuote();
+      // Rotate quotes every 10s for dynamism
+      setInterval(setQuote, 10000);
     }
   },
 
-  // 3. THEME LOGIC
+  // 4. THEME LOGIC
   applyInitialTheme() {
-    document.documentElement.classList.add(this.theme);
     document.body.classList.add(this.theme);
+    document.documentElement.classList.add(this.theme);
   },
 
   syncThemeUI() {
@@ -81,9 +85,11 @@ const App = {
     });
   },
 
-  // 4. NAVIGATION LOGIC
+  // 5. NAVIGATION LOGIC
   setupIntersectionObserver() {
     const scrollContainer = document.querySelector('.main');
+    if (!scrollContainer) return;
+
     const options = {
       root: scrollContainer,
       threshold: 0.5,
@@ -105,10 +111,11 @@ const App = {
     this.navLinks.forEach(link => {
       const isActive = link.getAttribute('href') === `#${id}`;
       link.classList.toggle('active-link', isActive);
+      if (isActive) link.setAttribute('aria-current', 'page');
     });
   },
 
-  // 5. PERFORMANCE CHECK
+  // 6. PERFORMANCE CHECK
   checkPerformance() {
     const memory = navigator.deviceMemory || 8;
     const cores = navigator.hardwareConcurrency || 4;
@@ -116,7 +123,7 @@ const App = {
 
     if (isLowEnd) {
       document.body.classList.add('low-end');
-      console.log("🚀 Low-end mode activated.");
+      console.log("Low-end mode activated.");
     }
   }
 };
