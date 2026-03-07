@@ -820,6 +820,8 @@ header>nav>ul {
         overflow-x: hidden;
         scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
+        transition: var(--transition-main);
+        animation: scroll_main 0.1ms 3s reverse ease !important;
     }
 
     .sections {
