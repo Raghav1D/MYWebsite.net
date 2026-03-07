@@ -422,26 +422,26 @@ header>nav>ul {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     transition: var(--transition-main);
-    animation: scroll_main 0.1ms 3s forwards ease;
+    animation: scroll_main 0.1ms 3s reverse ease !important;
 }
 
 @keyframes scroll_main {
     from {
-        overflow-y: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        overflow-x: hidden;
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
-    }
-
-    to {
         overflow-y: visible;
         scrollbar-width: auto;
         -ms-overflow-style: auto;
         overflow-x: visible;
         scroll-snap-type: none;
         scroll-behavior: auto;
+    }
+
+    to {
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        overflow-x: hidden;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
     }
 }
 
