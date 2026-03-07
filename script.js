@@ -28,6 +28,11 @@ const App = {
     } else {
       this.onReady();
     }
+
+    // Enable snapping after 3s (avoids jitter)
+    setTimeout(() => {
+      document.querySelector('.main')?.classList.add('snap-enabled');
+    }, 3000);
   },
 
   onReady() {
@@ -92,7 +97,7 @@ const App = {
 
     const options = {
       root: scrollContainer,
-      threshold: 0.5,
+      threshold: 0.6,
       rootMargin: "-10% 0px -10% 0px"
     };
 
