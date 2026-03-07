@@ -416,21 +416,21 @@ header>nav>ul {
     height: 100dvh;
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    overflow-x: hidden;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
     transition: var(--transition-main);
-    animation: scroll_main 0.1ms 3s reverse ease !important;
+    animation: scroll_main 0.1ms 3s forwards ease;
 }
 
 @keyframes scroll_main {
     from {
-        overflow-y: visible;
-        scrollbar-width: auto;
-        -ms-overflow-style: auto;
-        overflow-x: visible;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        overflow-x: hidden;
         scroll-snap-type: none;
         scroll-behavior: auto;
     }
