@@ -29,7 +29,6 @@ const App = {
       this.onReady();
     }
 
-    // Enable snapping after 3s (avoids jitter)
     setTimeout(() => {
       document.querySelector('.main')?.classList.add('snap-enabled');
     }, 3000);
@@ -38,28 +37,38 @@ const App = {
   onReady() {
     this.setupIntersectionObserver();
     this.setupThemeToggle();
-    this.syncThemeUI();
+    this.syncThemeUI(); // This now handles address bar + logos
     document.body.classList.add('app-ready');
   },
 
   // 3. QUOTE LOGIC
   initQuotes() {
     const quoteElement = document.getElementById("quote-display");
-    if (quoteElement) {
-      const setQuote = () => {
-        const randomIndex = Math.floor(Math.random() * this.quotes.length);
-        quoteElement.innerText = this.quotes[randomIndex];
-      };
-      setQuote();
-      // Rotate quotes every 10s for dynamism
-      setInterval(setQuote, 10000);
-    }
+    if (!quoteElement) return;
+
+    const setQuote = () => {
+      const randomIndex = Math.floor(Math.random() * this.quotes.length);
+      quoteElement.innerText = this.quotes[randomIndex];
+    };
+
+    setQuote();
+    setInterval(setQuote, 10000);
   },
 
   // 4. THEME LOGIC
   applyInitialTheme() {
-    document.body.classList.add(this.theme);
-    document.documentElement.classList.add(this.theme);
+    const isDark = this.theme === 'dark';
+    this.updateThemeClasses(isDark);
+  },
+
+  updateThemeClasses(isDark) {
+    const add = isDark ? 'dark' : 'light';
+    const remove = isDark ? 'light' : 'dark';
+
+    [document.body, document.documentElement].forEach(el => {
+      el.classList.add(add);
+      el.classList.remove(remove);
+    });
   },
 
   syncThemeUI() {
@@ -67,25 +76,36 @@ const App = {
     const logo = document.getElementById('logo');
     const themeIcon = document.querySelector('.theme-toggle_icon');
 
-    if (logo) {
-      logo.src = isDark ? "LOGO.webp" : "LOGO2.webp";
-    }
+    // UI Updates
+    if (logo) logo.src = isDark ? "LOGO.webp" : "LOGO2.webp";
+    if (themeIcon) themeIcon.classList.toggle('rotate', !isDark);
 
-    if (themeIcon) {
-      themeIcon.classList.toggle('rotate', !isDark);
-    }
-
+    // Persistence
     localStorage.setItem('theme-preference', isDark ? 'dark' : 'light');
-    document.documentElement.classList.toggle('dark', isDark);
-    document.documentElement.classList.toggle('light', !isDark);
+
+    // Mobile Address Bar Color
+    this.updateAddressBar(isDark);
+  },
+
+  updateAddressBar(isDark) {
+    // Matches your CSS hsl(260, 15%, 8%) and hsl(265, 20%, 92%)
+    const color = isDark ? "#0f0e11" : "#ebebf0";
+    let meta = document.querySelector('meta[name="theme-color"]');
+
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = "theme-color";
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', color);
   },
 
   setupThemeToggle() {
     const btn = document.getElementById('theme-toggle');
     if (!btn) return;
     btn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      document.body.classList.toggle('light');
+      const isCurrentlyDark = document.body.classList.contains('dark');
+      this.updateThemeClasses(!isCurrentlyDark);
       this.syncThemeUI();
     });
   },
@@ -97,8 +117,8 @@ const App = {
 
     const options = {
       root: scrollContainer,
-      threshold: 0.6,
-      rootMargin: "-10% 0px -10% 0px"
+      threshold: 0.5, // Better trigger point for snapping
+      rootMargin: "0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -124,11 +144,11 @@ const App = {
   checkPerformance() {
     const memory = navigator.deviceMemory || 8;
     const cores = navigator.hardwareConcurrency || 4;
-    const isLowEnd = memory < 4 || cores < 4 || (navigator.connection && navigator.connection.saveData);
+    const connection = navigator.connection;
+    const isLowEnd = memory < 4 || cores < 4 || (connection && connection.saveData);
 
     if (isLowEnd) {
       document.body.classList.add('low-end');
-      console.log("Low-end mode activated.");
     }
   }
 };
