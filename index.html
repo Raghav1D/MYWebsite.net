@@ -8,113 +8,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
   <meta name="description" content="Personal Portfolio - Built with Curiosity.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"
-    media="print" onload="this.media='all'">
-  <style>
-    :root {
-      --bg: hsl(260, 15%, 8%);
-      --text: hsl(260, 10%, 98%);
-    }
-
-    .overlay {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: var(--bg);
-      height: 100dvh;
-      width: 100%;
-      position: absolute;
-      z-index: 10000;
-      opacity: 1;
-      visibility: visible;
-      animation: start_fade_in 500ms 3s forwards ease;
-    }
-
-    .overlay>p {
-      position: absolute;
-      text-align: center;
-      color: var(--text);
-      padding-left: 50px;
-      padding-right: 50px;
-      font-size: clamp(1.5rem, 2.5vw, 6rem);
-      bottom: clamp(30%, 3vw, 45%);
-      opacity: 0;
-      animation: text_fade_in 500ms 0.6s forwards ease;
-    }
-
-    @keyframes text_fade_in {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes start_fade_in {
-      from {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    .loading_animation_container {
-      width: 150px;
-      height: 4px;
-      background-color: var(--bg-light);
-      position: relative;
-      overflow: hidden;
-      border-radius: 10000px;
-    }
-
-    .animated_line {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      background-color: var(--text);
-      transform-origin: left;
-      animation: modern-loading 1.5s infinite cubic-bezier(0.35, 0, 0.35, 1);
-    }
-
-    @keyframes modern-loading {
-      0% {
-        transform: translateX(-100%) scaleX(0.1);
-      }
-
-      50% {
-        transform: translateX(0%) scaleX(1);
-      }
-
-      100% {
-        transform: translateX(100%) scaleX(0.1);
-      }
-    }
-  </style>
-  <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="style.css">
-  </noscript>
+  <link rel="stylesheet" href="style.css">
   <title>MYWebsite</title>
   <script>
     const savedTheme = localStorage.getItem('theme-preference') || 'dark';
     document.documentElement.classList.add(savedTheme);
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.classList.add(savedTheme);
-    });
   </script>
 </head>
 
@@ -248,7 +146,7 @@
         </svg>
 
         <div class="scroll_down">
-          <a class="scroll_down_link" href="#about">
+          <a class="scroll_down_link" href="#about" aria-label="Link To About Page">
             <svg class="animated_scroll_svg" aria-hidden="true" height="30" viewBox="0 -960 960 960" width="30"
               fill="currentColor">
               <path
