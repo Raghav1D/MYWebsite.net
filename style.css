@@ -14,7 +14,7 @@
 }
 
 html {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -1089,3 +1089,4 @@ header>nav>ul {
     }
 
 }
+
