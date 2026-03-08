@@ -14,15 +14,24 @@
 </head>
 
 <body>
+  <!-- Loader -->
   <div class="overlay">
     <div class="loading_animation_container">
       <div class="animated_line"></div>
     </div>
-    <p id="quote-display">In The Quiet Of A Focused Mind, Curiosity Finds Its Voice.</p>
+    <p id="quote-display">
+      In The Quiet Of A Focused Mind, Curiosity Finds Its Voice.
+    </p>
   </div>
+
+  <!-- Header -->
   <header>
+
     <nav>
+
       <ul>
+
+        <!-- Logo -->
         <div class="logo_box">
           <li>
             <a href="#home">
@@ -31,8 +40,13 @@
           </li>
         </div>
 
+        <!-- Navigation Box -->
         <div class="nav_box">
+
+          <!-- Navigation Links -->
           <div class="nav_box2">
+
+            <!-- Navigation Home -->
             <li>
               <a class="active-link" href="#home">
                 <svg class="svg_icon" aria-hidden="true" focusable="false" height="1em" viewBox="0 -960 960 960"
@@ -43,6 +57,8 @@
                 <span>Home</span>
               </a>
             </li>
+
+            <!-- Navigation About -->
             <li>
               <a href="#about">
                 <svg class="svg_icon" aria-hidden="true" focusable="false" height="1em" viewBox="0 -960 960 960"
@@ -53,6 +69,8 @@
                 <span>About</span>
               </a>
             </li>
+
+            <!-- Navigation Projects -->
             <li>
               <a href="#projects">
                 <svg class="svg_icon" aria-hidden="true" focusable="false" height="1em" viewBox="0 -960 960 960"
@@ -63,6 +81,8 @@
                 <span>Projects</span>
               </a>
             </li>
+
+            <!-- Navigation Blogs -->
             <li>
               <a href="#blogs">
                 <svg class="svg_icon" aria-hidden="true" focusable="false" height="1em" viewBox="0 -960 960 960"
@@ -73,10 +93,15 @@
                 <span>Blogs</span>
               </a>
             </li>
+
           </div>
 
+          <!-- Navigation Dark Mode Toggle -->
           <div class="theme_box2">
+
+            <!-- Dark Mode Toggle Button -->
             <div class="theme_box">
+
               <button id="theme-toggle" aria-label="Toggle dark/light theme">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em"
                   class="theme-toggle_icon" fill="currentColor" viewBox="0 0 32 32">
@@ -84,21 +109,32 @@
                     d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z" />
                 </svg>
               </button>
+
             </div>
+
           </div>
+
         </div>
+
       </ul>
+
     </nav>
+
   </header>
 
+  <!-- Main Content -->
   <main class="main">
+
+    <!-- Hero Section -->
     <section class="sections" id="home">
+
       <div class="hero_content">
         <h1 class="h1">
           <span>Built With</span>
           <span>Curiosity.</span>
         </h1>
       </div>
+
       <div class="sub_description">
         <svg class="animated_svg" aria-hidden="true" height="60" viewBox="0 -960 960 960" width="60"
           fill="currentColor">
@@ -108,26 +144,38 @@
 
         <div class="scroll_down">
           <a class="scroll_down_link" href="#about">
-            <svg class="animated_scroll_svg" aria-hidden="true" height="32" viewBox="0 -960 960 960" width="32"
+            <svg class="animated_scroll_svg" aria-hidden="true" height="30" viewBox="0 -960 960 960" width="30"
               fill="currentColor">
               <path
                 d="M440-313v-447q0-17 11.5-28.5T480-800q17 0 28.5 11.5T520-760v447l196-196q12-12 28-11.5t28 12.5q11 12 11.5 28T772-452L508-188q-6 6-13 8.5t-15 2.5q-8 0-15-2.5t-13-8.5L188-452q-11-11-11-27.5t11-28.5q12-12 28.5-12t28.5 12l195 195Z" />
             </svg>
-            <span>Scroll Down</span>
+            <!-- <span>Scroll Down</span> -->
+             <div class="down_line"></div>
           </a>
         </div>
+
       </div>
 
       <div class="animated_line1"></div>
       <div class="animated_line2"></div>
+
     </section>
 
+    <!-- About -->
     <section class="sections" id="about">
     </section>
+
+    <!-- Projects -->
     <section class="sections" id="projects">projects</section>
+
+    <!-- Blogs -->
     <section class="sections" id="blogs">blogs</section>
+
   </main>
+
+  <!-- Scripts -->
   <script src="script.js" defer></script>
+
 </body>
 
 </html>
