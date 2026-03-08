@@ -18,13 +18,34 @@ html {
     scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+    background-color: var(--bg);
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--text-muted);
+    border: 3px solid var(--bg);
+    border-radius: 1000px;
+    height: auto;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text);
+    transition: all 0.3s ease;
+}
+
 /* ==========================================================================
    1. THEME VARIABLES
    ========================================================================== */
 body.dark {
     --bg-dark: hsl(260, 20%, 6%);
     --bg-dark2: hsl(260, 20%, 10%);
-    --bg: hsl(260, 15%, 11%);
+    --bg: hsl(260, 15%, 8%);
     --bg-light: hsl(260, 15%, 18%);
     --glass-bg: hsla(265, 30%, 15%, 0.027);
     --text: hsl(260, 10%, 98%);
@@ -99,6 +120,10 @@ body.low-end .sections {
     background-color: var(--bg) !important;
 }
 
+.sections {
+    background-image: none !important;
+}
+
 body.low-end * {
     animation-duration: 0.1s !important;
     transition-duration: 0.1s !important;
@@ -160,7 +185,7 @@ body.low-end * {
     background-color: var(--bg-light);
     position: relative;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: 10000px;
 }
 
 .animated_line {
@@ -169,7 +194,7 @@ body.low-end * {
     width: 100%;
     background-color: var(--text);
     transform-origin: left;
-    animation: modern-loading 2s infinite cubic-bezier(0.35, 0, 0.35, 1);
+    animation: modern-loading 1.5s infinite cubic-bezier(0.35, 0, 0.35, 1);
 }
 
 @keyframes modern-loading {
@@ -413,52 +438,10 @@ header>nav>ul {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
+    scroll-behavior: smooth;
     height: 100dvh;
     width: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-snap-type: none;
-    scroll-behavior: auto;
-    animation: scroll_main 0.1ms 3s forwards ease;
-}
-
-.main::-webkit-scrollbar {
-    display: none;
-}
-
-.main.snap-enabled {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-}
-
-.sections {
-    scroll-snap-align: start;
-}
-
-@keyframes scroll_main {
-    from {
-        overflow-y: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        overflow-x: hidden;
-        scroll-snap-type: none;
-        scroll-behavior: auto;
-    }
-
-    to {
-        overflow-y: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        overflow-x: hidden;
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
-    }
-}
-
-.main::-webkit-scrollbar {
-    display: none;
 }
 
 .sections {
@@ -826,14 +809,7 @@ header>nav>ul {
     }
 
     .main {
-        overflow-y: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        overflow-x: hidden;
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
         transition: var(--transition-main);
-        animation: scroll_main 0.1ms 3s reverse ease !important;
     }
 
     .sections {
@@ -960,7 +936,6 @@ header>nav>ul {
         align-items: center;
         font-size: clamp(5rem, 12vw, 15rem) !important;
         border-radius: 1000px;
-        /* background-color: yellow; */
         color: var(--text);
         transition: var(--transition-main);
         cursor: pointer;
@@ -1051,16 +1026,20 @@ header>nav>ul {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        gap: 4px;
+        position: relative;
         transform: scale(0, 0);
-        padding-left: 3px;
-        padding-right: 8px;
-        border-radius: 1000px;
-        border: 2px solid var(--text-muted);
-        backdrop-filter: blur(2px);
         animation: scroll_down_fade_in 500ms 5s forwards cubic-bezier(0.075, 0.82, 0.165, 1),
             scroll 1.2s 6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
         transition: var(--transition-main);
+    }
+
+    .down_line {
+        position: absolute;
+        bottom: -5%;
+        width: 20%;
+        height: 3px;
+        background-color: var(--text-muted);
+        border-radius: 1000px;
     }
 
     @keyframes scroll_down_fade_in {
