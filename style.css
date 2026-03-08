@@ -151,6 +151,8 @@ body.low-end * {
 .overlay>p {
     position: absolute;
     text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
     font-size: clamp(1.5rem, 2.5vw, 6rem);
     bottom: clamp(30%, 3vw, 45%);
     opacity: 0;
@@ -180,7 +182,7 @@ body.low-end * {
 }
 
 .loading_animation_container {
-    width: 200px;
+    width: 150px;
     height: 4px;
     background-color: var(--bg-light);
     position: relative;
