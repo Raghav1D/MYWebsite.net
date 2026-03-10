@@ -89,10 +89,6 @@ body.light {
     transform: translateZ(0);
 }
 
-/* .theme_box2 {
-    border: none;
-} */
-
 @supports not (backdrop-filter: blur(0px)) {
 
     .nav_box2,
@@ -155,7 +151,7 @@ body.low-end * {
     padding-left: 50px;
     padding-right: 50px;
     font-size: clamp(1.5rem, 2.5vw, 6rem);
-    bottom: clamp(30%, 3vw, 45%);
+    bottom: clamp(15%, 3vw, 45%);
     opacity: 0;
     animation: text_fade_in 500ms 0.6s forwards ease;
 }
@@ -274,9 +270,7 @@ header>nav>ul {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    /* border-radius: 10000px; */
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    /* background-color: red; */
     width: 100%;
 }
 
@@ -462,19 +456,8 @@ header>nav>ul {
     height: 100%;
     width: 100%;
     padding: 5px;
-    /* animation: bg_animation 5s forwards ease; */
     transition: var(--transition-main);
 }
-
-/* @keyframes bg_animation {
-    from{
-        background-image: radial-gradient(var(--bg) 0.5px, transparent 0.5px), radial-gradient(var(--text-muted) 0px, var(--bg) 0px);
-    }
-
-    to{
-        background-image: radial-gradient(var(--bg) 0.5px, transparent 0.5px), radial-gradient(var(--text-muted) 0.8px, var(--bg) 0.8px);
-    }
-} */
 
 #home {
     display: flex;
@@ -484,6 +467,83 @@ header>nav>ul {
     padding: 0 8%;
     position: relative;
     overflow: hidden;
+}
+
+.symbol1,
+.symbol2,
+.symbol3 {
+    position: fixed;
+    color: var(--text-muted);
+    opacity: 0;
+    /* z-index: -1; */
+    pointer-events: none;
+    user-select: none;
+    -webkit-text-stroke: 1px hsla(0, 0%, 100%, 0.2);
+    filter: drop-shadow(0 0 5px hsla(0, 0%, 100%, 0.1));
+    will-change: translate, rotate, opacity;
+    transform-style: preserve-3d;
+    animation: symbols_fade_in 1.5s 3s forwards ease-out,
+        symbols_float 8s 4.5s ease-in-out infinite;
+    transition: translate 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        rotate 1s ease-out,
+        color 0.3s ease,
+        height 0.3s ease,
+        width 0.3s ease;
+}
+
+@keyframes symbols_fade_in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.15;
+    }
+
+}
+
+@keyframes symbols_float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+.symbol1 {
+    top: -2%;
+    left: -4%;
+    height: 200px;
+    width: 200px;
+    filter: blur(0.5px);
+    translate: calc(sin(var(--scroll) / 800) * 50px) calc(var(--scroll) * 0.05 * 1px);
+    rotate: calc(15deg + (var(--scroll) * 0.01deg));
+}
+
+.symbol2 {
+    bottom: 2%;
+    right: -2%;
+    scale: 0.9;
+    height: 200px;
+    width: 200px;
+    filter: blur(2px);
+    translate: calc(sin((var(--scroll) / 600) + 1) * -40px) calc(var(--scroll) * -0.12 * 1px);
+    rotate: calc(15deg - (var(--scroll) * 0.02deg));
+}
+
+.symbol3 {
+    top: 50%;
+    right: 60%;
+    scale: 0.9;
+    height: 200px;
+    width: 200px;
+    filter: blur(1px);
+    translate: calc(sin(var(--scroll) / 1000) * 120px) calc(var(--scroll) * 0.2 * 1px);
+    rotate: calc(110deg + (var(--scroll) * 0.05deg));
 }
 
 .hero_content {
@@ -601,6 +661,7 @@ header>nav>ul {
 }
 
 
+
 /* ==========================================================================
    7. KEYFRAMES
    ========================================================================== */
@@ -638,7 +699,6 @@ header>nav>ul {
         display: flex;
         justify-content: center;
         border-radius: 10000px;
-        /* background-color: red; */
         gap: 10px;
     }
 
@@ -847,20 +907,86 @@ header>nav>ul {
         max-width: auto;
         /* gap: 40px; */
         position: absolute;
-        /* animation: auto_fade;
-        animation-timeline: view(); */
         transition: var(--transition-main);
     }
 
-    /* @keyframes auto_fade{
-        from{
-            transform:  scale(1 , 1);
+    .symbol1,
+    .symbol2,
+    .symbol3 {
+        position: fixed;
+        color: var(--text-muted);
+        opacity: 0;
+        /* z-index: -1; */
+        pointer-events: none;
+        user-select: none;
+        -webkit-text-stroke: 1px hsla(0, 0%, 100%, 0.2);
+        filter: drop-shadow(0 0 5px hsla(0, 0%, 100%, 0.1));
+        will-change: translate, rotate, opacity;
+        transform-style: preserve-3d;
+        animation: symbols_fade_in 1.5s 3s forwards ease-out,
+            symbols_float 8s 4.5s ease-in-out infinite;
+        transition: translate 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+            rotate 1s ease-out,
+            color 0.3s ease,
+            height 0.3s ease,
+            width 0.3s ease;
+    }
+
+    @keyframes symbols_fade_in {
+        from {
+            opacity: 0;
         }
 
-        to{
-            transform: scale(0 , 0);
+        to {
+            opacity: 0.15;
         }
-    } */
+
+    }
+
+    @keyframes symbols_float {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-15px) rotate(5deg);
+        }
+    }
+
+    .symbol1 {
+        top: -2%;
+        left: -4%;
+        scale: 1.2;
+        height: 360px !important;
+        width: 360px !important;
+        filter: blur(0.5px);
+        translate: calc(sin(var(--scroll) / 800) * 50px) calc(var(--scroll) * 0.05 * 1px);
+        rotate: calc(15deg + (var(--scroll) * 0.01deg));
+    }
+
+    .symbol2 {
+        bottom: 2%;
+        right: -2%;
+        scale: 0.9;
+        height: 260px !important;
+        width: 260px !important;
+        filter: blur(2px);
+        translate: calc(sin((var(--scroll) / 600) + 1) * -40px) calc(var(--scroll) * -0.12 * 1px);
+        rotate: calc(15deg - (var(--scroll) * 0.02deg));
+    }
+
+    .symbol3 {
+        top: 50%;
+        right: 60%;
+        scale: 0.9;
+        height: 360px !important;
+        width: 360px !important;
+        filter: blur(1px);
+        translate: calc(sin(var(--scroll) / 1000) * 120px) calc(var(--scroll) * 0.2 * 1px);
+        rotate: calc(110deg + (var(--scroll) * 0.05deg));
+    }
 
     .h1 span {
         display: block;
@@ -1034,7 +1160,7 @@ header>nav>ul {
         position: relative;
         transform: scale(0, 0);
         animation: scroll_down_fade_in 500ms 5s forwards cubic-bezier(0.075, 0.82, 0.165, 1),
-            scroll 1.2s 6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+            scroll2 1.2s 6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
         transition: var(--transition-main);
     }
 
@@ -1057,7 +1183,7 @@ header>nav>ul {
         }
     }
 
-    @keyframes scroll {
+    @keyframes scroll2 {
         0% {
             opacity: 1;
             transform: translateY(0px);
@@ -1089,4 +1215,3 @@ header>nav>ul {
     }
 
 }
-
