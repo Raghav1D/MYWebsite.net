@@ -154,3 +154,23 @@ const App = {
 };
 
 App.init();
+
+/* ==========================================================================
+   SCROLL TRACKER FOR PARALLAX SYMBOLS
+   ========================================================================== */
+// 1. Target the specific container that has the scrollbar (usually .main)
+const scrollContainer = document.querySelector('.main') || window;
+
+scrollContainer.addEventListener('scroll', () => {
+  // 2. Get the scroll position (support both window and div scrolling)
+  const scrolled = (scrollContainer === window)
+    ? window.scrollY
+    : scrollContainer.scrollTop;
+
+  // 3. Update the CSS variable on the root (html) element
+  // We send a unitless number so the CSS calc() can handle the math
+  document.documentElement.style.setProperty('--scroll', scrolled);
+
+  // DEBUG: Uncomment the line below to see the numbers in your console
+  // console.log("Current Scroll:", scrolled);
+}, { passive: true });
