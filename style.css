@@ -1298,81 +1298,81 @@ header>nav>ul {
     }
 
     #about>.words_on_left {
-        display: flex;
+        display: flex !important;
         /* flex-direction: column; */
-        justify-content: center;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 2%;
+        justify-content: center !important;
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: 2% !important;
     }
 
     #about>.words_on_left>h1 {
-        font-size: clamp(4rem, 9vw, 10rem);
-        width: 100%;
+        font-size: clamp(4rem, 9vw, 10rem) !important;
+        width: 100% !important;
         font-weight: 300;
-        line-height: 1.1;
+        /* line-height: 1.1; */
     }
 
     /* --- The Vision Container --- */
     .vision_container {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: flex-start !important;
     }
 
     .vision_text>.line {
-        font-weight: 300;
-        font-size: 40px;
+        font-weight: 300 !important;
+        font-size: 40px !important;
     }
 
     .vision_text>.line_highlighting {
-        font-weight: bold;
-        font-size: 45px;
+        font-weight: bold !important;
+        font-size: 45px !important;
     }
 
     .vision_text {
-        position: absolute;
+        position: absolute !important;
         left: 2% !important;
-        text-align: left;
-        top: 50%;
-        transform: translate(0%, -50%);
-        width: auto;
-        height: 60dvh;
-        max-width: 40%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 0.5rem;
+        text-align: left !important;
+        top: 50% !important;
+        transform: translate(0%, -50%) !important;
+        width: auto !important;
+        height: 60dvh !important;
+        max-width: 40% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 0.5rem !important;
         font-size: clamp(2rem, 3.5vw, 4.5rem);
     }
 
     .link_to_projects {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        position: absolute !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
         right: 3% !important;
         font-size: clamp(1rem, 1vw, 4.5rem);
         font-weight: 300;
-        height: 100px;
-        gap: 12px;
+        height: 100px !important;
+        gap: 12px !important;
     }
 
     .link_to_projects>a {
-        bottom: 0%;
+        bottom: 0% !important;
         text-decoration: none;
         color: var(--text);
         border-radius: 1000px;
         border: 2px solid var(--text);
         color: var(--bg);
-        padding-inline: 14px;
-        font-weight: 500;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        font-size: 16px;
+        padding-inline: 14px !important;
+        font-weight: 500 !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        font-size: 16px !important;
         background-color: var(--text);
     }
 
