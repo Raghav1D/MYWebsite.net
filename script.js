@@ -1,6 +1,8 @@
 const App = {
   // 1. CONFIGURATION & DATA
   theme: localStorage.getItem('theme-preference') || 'dark',
+  isLowEnd: false,
+  lenis: null, // Placeholder for Lenis instance
 
   quotes: [
     "In The Quiet Of A Focused Mind, Curiosity Finds Its Voice.",
@@ -13,13 +15,13 @@ const App = {
     "Clarity Is The Reward Of A Wandering Mind."
   ],
 
-  // Getters for DOM elements
+  // Getters for frequently used elements
   get sections() { return document.querySelectorAll('.sections'); },
   get navLinks() { return document.querySelectorAll('.nav_box2 li a'); },
 
   // 2. INITIALIZATION
   init() {
-    this.checkPerformance();
+    this.detectPerformance();
     this.applyInitialTheme();
     this.initQuotes();
 
@@ -29,33 +31,178 @@ const App = {
       this.onReady();
     }
 
+    // Delayed snap-enable for smoother entry
     setTimeout(() => {
-      document.querySelector('.main')?.classList.add('snap-enabled');
+      if (!this.isLowEnd) {
+        document.querySelector('.main')?.classList.add('snap-enabled');
+      }
     }, 3000);
   },
 
   onReady() {
+    this.initSmoothScroll(); // Initialize Lenis first
     this.setupIntersectionObserver();
     this.setupThemeToggle();
-    this.syncThemeUI(); // This now handles address bar + logos
+    this.syncThemeUI();
+    this.initScrollTracker();
+    this.setupScrollLinks(); // Navigation links
+    this.setupScrollDown();  // The "Down Arrow" link
+    this.initAnimations();   // GSAP logic
+
+    // Final refresh to ensure ScrollTrigger knows where everything is
+    setTimeout(() => {
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+      }
+    }, 600);
+
     document.body.classList.add('app-ready');
   },
 
-  // 3. QUOTE LOGIC
-  initQuotes() {
-    const quoteElement = document.getElementById("quote-display");
-    if (!quoteElement) return;
-
-    const setQuote = () => {
-      const randomIndex = Math.floor(Math.random() * this.quotes.length);
-      quoteElement.innerText = this.quotes[randomIndex];
-    };
-
-    setQuote();
-    setInterval(setQuote, 10000);
+  // 3. PERFORMANCE & CORE SYSTEMS
+  detectPerformance() {
+    const memory = navigator.deviceMemory || 8;
+    const cores = navigator.hardwareConcurrency || 4;
+    // Targeting older hardware like i3-2100
+    if (memory < 4 || cores < 4) {
+      this.isLowEnd = true;
+      document.body.classList.add('low-end');
+    }
   },
 
-  // 4. THEME LOGIC
+  initSmoothScroll() {
+    // Optional: if (this.isLowEnd) return; 
+
+    this.lenis = new Lenis({
+      wrapper: document.querySelector('.main'),
+      content: document.querySelector('.main'),
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    this.lenis.on('scroll', () => ScrollTrigger.update());
+
+    gsap.ticker.add((time) => {
+      this.lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+  },
+
+  initScrollTracker() {
+    const scrollContainer = document.querySelector('.main') || window;
+    let ticking = false;
+    scrollContainer.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = (scrollContainer === window) ? window.scrollY : scrollContainer.scrollTop;
+          document.documentElement.style.setProperty('--scroll', scrolled);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  },
+
+  // 4. NAVIGATION & SCROLL LOGIC
+  setupScrollLinks() {
+    this.navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (targetId.startsWith('#')) {
+          e.preventDefault();
+          if (this.lenis) {
+            this.lenis.scrollTo(targetId, {
+              duration: 1.5,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
+          }
+        }
+      });
+    });
+  },
+
+  setupScrollDown() {
+    const scrollLink = document.querySelector('.scroll_down_link');
+    if (scrollLink && this.lenis) {
+      scrollLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = scrollLink.getAttribute('href');
+        this.lenis.scrollTo(targetId, {
+          duration: 1.5,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+      });
+    }
+  },
+
+  // 5. GSAP ANIMATIONS
+  initAnimations() {
+    if (this.isLowEnd || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.defaults({
+      scroller: ".main"
+    });
+
+    // About Me Heading & Underline
+    const heading = document.querySelector("#about .words_on_left h1");
+    if (heading) {
+
+      // Heading reveal
+      gsap.from(heading, {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.3,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: heading,
+          start: "top 100%",
+          toggleActions: "play none none reverse",
+        }
+      });
+    }
+
+    // Vision Text Reveal
+    const visionLines = document.querySelectorAll(".vision_text .line");
+    if (visionLines.length > 0) {
+      gsap.from(visionLines, {
+        opacity: 0,
+        y: 30,
+        duration: 1.2,
+        // stagger: 0.3,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: heading,
+          start: "top 90%",
+          toggleActions: "play none none reverse",
+        }
+      });
+    }
+
+    const visionLine = document.querySelectorAll(".vision_text .line_highlighting");
+    if (visionLine.length > 0) {
+      gsap.from(visionLine, {
+        opacity: 0,
+        y: 30,
+        duration: 1.2,
+        // stagger: 0.3,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: heading,
+          start: "top 90%",
+          toggleActions: "play none none reverse",
+        }
+      });
+    }
+  },
+
+  // 6. THEME & UI LOGIC
   applyInitialTheme() {
     const isDark = this.theme === 'dark';
     this.updateThemeClasses(isDark);
@@ -64,7 +211,6 @@ const App = {
   updateThemeClasses(isDark) {
     const add = isDark ? 'dark' : 'light';
     const remove = isDark ? 'light' : 'dark';
-
     [document.body, document.documentElement].forEach(el => {
       el.classList.add(add);
       el.classList.remove(remove);
@@ -76,22 +222,16 @@ const App = {
     const logo = document.getElementById('logo');
     const themeIcon = document.querySelector('.theme-toggle_icon');
 
-    // UI Updates
     if (logo) logo.src = isDark ? "LOGO.webp" : "LOGO2.webp";
     if (themeIcon) themeIcon.classList.toggle('rotate', !isDark);
 
-    // Persistence
     localStorage.setItem('theme-preference', isDark ? 'dark' : 'light');
-
-    // Mobile Address Bar Color
     this.updateAddressBar(isDark);
   },
 
   updateAddressBar(isDark) {
-    // Matches your CSS hsl(260, 15%, 8%) and hsl(265, 20%, 92%)
     const color = isDark ? "#0f0e11" : "#ebebf0";
     let meta = document.querySelector('meta[name="theme-color"]');
-
     if (!meta) {
       meta = document.createElement('meta');
       meta.name = "theme-color";
@@ -110,25 +250,27 @@ const App = {
     });
   },
 
-  // 5. NAVIGATION LOGIC
+  initQuotes() {
+    const quoteElement = document.getElementById("quote-display");
+    if (!quoteElement) return;
+    const setQuote = () => {
+      const randomIndex = Math.floor(Math.random() * this.quotes.length);
+      quoteElement.innerText = this.quotes[randomIndex];
+    };
+    setQuote();
+    setInterval(setQuote, 10000);
+  },
+
   setupIntersectionObserver() {
     const scrollContainer = document.querySelector('.main');
     if (!scrollContainer) return;
-
-    const options = {
-      root: scrollContainer,
-      threshold: 0.5, // Better trigger point for snapping
-      rootMargin: "0px"
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           this.updateActiveNavLink(entry.target.id);
         }
       });
-    }, options);
-
+    }, { root: scrollContainer, threshold: 0.5 });
     this.sections.forEach(section => observer.observe(section));
   },
 
@@ -138,39 +280,8 @@ const App = {
       link.classList.toggle('active-link', isActive);
       if (isActive) link.setAttribute('aria-current', 'page');
     });
-  },
-
-  // 6. PERFORMANCE CHECK
-  checkPerformance() {
-    const memory = navigator.deviceMemory || 8;
-    const cores = navigator.hardwareConcurrency || 4;
-    const connection = navigator.connection;
-    const isLowEnd = memory < 4 || cores < 4 || (connection && connection.saveData);
-
-    if (isLowEnd) {
-      document.body.classList.add('low-end');
-    }
   }
 };
 
+// Start the Application
 App.init();
-
-/* ==========================================================================
-   SCROLL TRACKER FOR PARALLAX SYMBOLS
-   ========================================================================== */
-// 1. Target the specific container that has the scrollbar (usually .main)
-const scrollContainer = document.querySelector('.main') || window;
-
-scrollContainer.addEventListener('scroll', () => {
-  // 2. Get the scroll position (support both window and div scrolling)
-  const scrolled = (scrollContainer === window)
-    ? window.scrollY
-    : scrollContainer.scrollTop;
-
-  // 3. Update the CSS variable on the root (html) element
-  // We send a unitless number so the CSS calc() can handle the math
-  document.documentElement.style.setProperty('--scroll', scrolled);
-
-  // DEBUG: Uncomment the line below to see the numbers in your console
-  // console.log("Current Scroll:", scrolled);
-}, { passive: true });
