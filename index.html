@@ -18,14 +18,14 @@
 
 <body>
   <!-- Loader -->
-  <div class="overlay">
+  <!-- <div class="overlay">
     <div class="loading_animation_container">
       <div class="animated_line"></div>
     </div>
     <p id="quote-display">
       In The Quiet Of A Focused Mind, Curiosity Finds Its Voice.
     </p>
-  </div>
+  </div> -->
 
   <!-- Header -->
   <header>
@@ -172,7 +172,6 @@
               <path
                 d="M440-313v-447q0-17 11.5-28.5T480-800q17 0 28.5 11.5T520-760v447l196-196q12-12 28-11.5t28 12.5q11 12 11.5 28T772-452L508-188q-6 6-13 8.5t-15 2.5q-8 0-15-2.5t-13-8.5L188-452q-11-11-11-27.5t11-28.5q12-12 28.5-12t28.5 12l195 195Z" />
             </svg>
-            <!-- <span>Scroll Down</span> -->
             <div class="down_line"></div>
           </a>
         </div>
@@ -186,18 +185,45 @@
 
     <!-- About -->
     <section class="sections" id="about">
+      <div class="words_on_left">
+        <h1>About Me</h1>
+      </div>
+
+      <div class="vision_container">
+        <h2 class="vision_text">
+          <span class="line">Guided by vision.</span>
+          <span class="line">Built by hand.</span>
+          <span class="line_highlighting">
+            Defined by the process of making things happen.
+          </span>
+        </h2>
+      </div>
+
+      <div class="link_to_projects">
+        <h2>Check Out Some Of Them...</h2>
+        <a href="#projects">Explore</a>
+      </div>
+
     </section>
 
     <!-- Projects -->
-    <section class="sections" id="projects">projects</section>
+    <section class="sections" id="projects">
+      <h1>Projects</h1>
+    </section>
 
     <!-- Blogs -->
-    <section class="sections" id="blogs">blogs</section>
+    <section class="sections" id="blogs">
+      <h1>Blogs</h1>
+    </section>
 
   </main>
 
   <!-- Scripts -->
   <script src="script.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
 
 </body>
 
