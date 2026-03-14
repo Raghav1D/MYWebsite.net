@@ -1278,7 +1278,7 @@ header>nav>ul {
         gap: 12px !important;
     }
 
-    .link_to_projects>scroll_down_link_projects {
+    .link_to_projects>.scroll_down_link_projects {
         bottom: 0% !important;
         text-decoration: none;
         color: var(--text);
