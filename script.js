@@ -47,6 +47,7 @@ const App = {
     this.initScrollTracker();
     this.setupScrollLinks(); // Navigation links
     this.setupScrollDown();  // The "Down Arrow" link
+    this.setupScrollDown_projects();
     this.initAnimations();   // GSAP logic
 
     // Final refresh to ensure ScrollTrigger knows where everything is
@@ -127,6 +128,20 @@ const App = {
 
   setupScrollDown() {
     const scrollLink = document.querySelector('.scroll_down_link');
+    if (scrollLink && this.lenis) {
+      scrollLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = scrollLink.getAttribute('href');
+        this.lenis.scrollTo(targetId, {
+          duration: 1.5,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+      });
+    }
+  },
+  
+  setupScrollDown_projects() {
+    const scrollLink = document.querySelector('.scroll_down_link_projects');
     if (scrollLink && this.lenis) {
       scrollLink.addEventListener('click', (e) => {
         e.preventDefault();
